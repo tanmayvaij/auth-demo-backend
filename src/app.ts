@@ -1,5 +1,9 @@
 import express from "express"
+import { config } from "dotenv"
 import { connectDB } from "./db"
+
+
+config()
 
 
 const app = express()
