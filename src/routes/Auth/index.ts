@@ -1,10 +1,10 @@
 import { Router } from "express"
-import { handleSignin, handleSignup } from "./controller"
+import { handleLogin, handleRegistration } from "./controller"
 
 const router = Router()
 
-router.route('/signin').post(handleSignin)
+router.route('/signin').post(handleLogin)
 
-router.route('/signup').post(handleSignup)
+router.route('/signup').post(handleRegistration)
 
 export default router
