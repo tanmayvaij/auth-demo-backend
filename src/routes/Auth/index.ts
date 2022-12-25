@@ -2,12 +2,12 @@ import { Router } from "express"
 import { handleGetUser, handleLogin, handleRegistration } from "./controller"
 import { validateToken } from "./middleware"
 
-const router: Router = Router()
+const router = Router()
 
 router.route('/getuser').get(validateToken, handleGetUser)
 
-router.route('/signin').post(handleLogin)
+router.route('/login').post(handleLogin)
 
-router.route('/signup').post(handleRegistration)
+router.route('/register').post(handleRegistration)
 
 export default router

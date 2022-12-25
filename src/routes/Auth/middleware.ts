@@ -22,7 +22,7 @@ export const validateToken = (req: Request, res: Response, next: NextFunction) =
     }
 
     catch (err) {
-        res.json({ status: false, message: "Invalid token" })
+        return res.json({ status: false, message: "Invalid token" })
     }
         
 }
