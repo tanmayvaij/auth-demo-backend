@@ -83,3 +83,12 @@ export const handleLogin = async (req: Request, res: Response) => {
     res.json({ success: true, authtoken })
     
 }
+
+
+export const handleGetUser = (req: Request, res: Response) => {
+
+    const user = req.user
+
+    res.json({ user })
+
+}
