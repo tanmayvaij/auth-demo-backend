@@ -1,13 +1,13 @@
-import { Router } from "express"
-import { handleGetUser, handleLogin, handleRegistration } from "./controller"
-import { validateToken } from "./middleware"
+import { Router } from "express";
+import { handleGetUser, handleLogin, handleRegistration } from "./controller";
+import { validateToken } from "./middleware";
 
-const router = Router()
+const router = Router();
 
-router.route('/getuser').get(validateToken, handleGetUser)
+router.route("/getuser").get(validateToken, handleGetUser);
 
-router.route('/login').post(handleLogin)
+router.route("/login").post(handleLogin);
 
-router.route('/register').post(handleRegistration)
+router.route("/register").post(handleRegistration);
 
-export default router
+export default router;

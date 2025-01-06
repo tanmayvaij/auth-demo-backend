@@ -3,5 +3,4 @@ WORKDIR /app
 COPY . /app
 RUN yarn
 RUN yarn build
-EXPOSE 5000
 RUN yarn start
