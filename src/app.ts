@@ -5,7 +5,6 @@ import cors from "cors";
 import { connectDB } from "./db";
 
 const app = express();
-const PORT = process.env.BACKEND_EXPOSE_PORT;
 
 // enabled all environment variables
 config();
@@ -27,7 +26,7 @@ const start = () => {
     // connecting to database
     connectDB();
 
-    app.listen(BACKEND_EXPOSE_PORT, () => {
+    app.listen(process.env.BACKEND_EXPOSE_PORT, () => {
       console.log("Server started successfully");
     });
   } catch (err) {
