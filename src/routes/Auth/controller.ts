@@ -14,16 +14,16 @@ export const handleRegistration = async (req: Request, res: Response) => {
     password == "" ||
     cpassword == ""
   ) {
-    return res.json({ status: false, message: "required fields are empty" });
+    res.json({ status: false, message: "required fields are empty" });
   }
 
   if (password != cpassword)
-    return res.json({ status: false, message: "passwords mismatch" });
+    res.json({ status: false, message: "passwords mismatch" });
 
   const userExists = await UserSchema.findOne({ email });
 
   if (userExists)
-    return res.json({
+    res.json({
       status: false,
       message: `user with email ${email} already exists`,
     });
@@ -59,22 +59,21 @@ export const handleLogin = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   if (email == "" || password == "")
-    return res.json({ status: false, message: "missing fields" });
+    res.json({ status: false, message: "missing fields" });
 
   const user = await UserSchema.findOne({ email });
 
-  if (!user) return res.json({ status: false, message: "invalid credentials" });
+  if (!user) res.json({ status: false, message: "invalid credentials" });
 
   const match = await compare(password, user?.password as string);
 
-  if (!match)
-    return res.json({ status: false, message: "invalid credentials" });
+  if (!match) res.json({ status: false, message: "invalid credentials" });
 
   const payload = {
-    name: user.name,
-    number: user.number,
-    email: user.email,
-    address: user.address,
+    name: user!.name,
+    number: user!.number,
+    email: user!.email,
+    address: user!.address,
   };
 
   const authtoken = sign(payload, process.env.JWT_SECRET as string);
